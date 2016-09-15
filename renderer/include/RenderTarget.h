@@ -10,6 +10,7 @@
 #include  "../src/algorithms.hpp"
 #include <stdio.h>
 #include <string.h>
+#include "VertexProcessor.h"
 class RenderTarget : public sf::Drawable
 {
 public:
@@ -49,7 +50,7 @@ public:
 
 
     void triangle(Vertex3Bf a,Vertex3Bf b,Vertex3Bf c) const;
-    void triangle(const std::vector<Vertex3Bf> vertex,const std::vector<Vector3Bi> indices,const int triangleCount) const;
+    void triangle(const     Vertex3BfVector  &vertex,const Vector3BiVector &indices,const int triangleCount,const VertexProcessor& vp) const;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         // You can draw other high-level objects
@@ -79,6 +80,13 @@ private:
     sf::Texture m_texture;
     sf::Uint8 *m_pixelsU8;
     d_type::Bint m_width,m_height;
+    mutable Vertex3Bf a,b,c;
+    mutable d_type::Bfloat minX,maxX,minY,maxY,dx12,dx23,dx31,dx13,dx32,dy12,dy23,dy31,dy13,depth ;
+
+    mutable d_type::Bint minXPrim,maxXPrim,minYPrim,maxYPrim;
+
+
+
 };
 
 #endif // RENDERTARGET_H

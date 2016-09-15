@@ -27,12 +27,12 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-march=corei7" />
 					<Add option="-O3" />
 					<Add option="-Wextra" />
 					<Add option="-pg" />
 					<Add option="-Wunused" />
 					<Add directory="include" />
+					<Add directory="Allocators" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -53,6 +53,7 @@
 			<Add directory="C:/Libs/SFML/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="FPS.hpp" />
+		<Unit filename="alloc.ads" />
 		<Unit filename="include/CheckCPU.h" />
 		<Unit filename="include/Colour.h" />
 		<Unit filename="include/DirectionalLight.h" />
@@ -69,6 +70,7 @@
 		<Unit filename="include/Vertex2.h" />
 		<Unit filename="include/Vertex3.h" />
 		<Unit filename="include/VertexProcessor.h" />
+		<Unit filename="include/alloc.h" />
 		<Unit filename="include/structs.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CheckCPU.cpp" />

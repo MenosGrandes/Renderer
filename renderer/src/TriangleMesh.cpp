@@ -115,28 +115,27 @@ void render::TriangleMesh::loadOBJ(std::string filename)
     std::cout<<"Indices :"<<vertexIndices.size()<<"\n";
 }
 
-void render::TriangleMesh::draw(const VertexProcessor &vp,const RenderTarget &rt)
+void render::TriangleMesh::draw(const VertexProcessor &vp,const RenderTarget &rt) const
 {
 
-vp.tr(m_vertices,m_triangleCount);
-//wersja dla wszystkich
-rt.triangle(vp.tmp_vertices,m_indices,m_triangleCount);
+//vp.tr(m_vertices,m_triangleCount);
+    rt.triangle(m_vertices,m_indices,m_triangleCount,vp);
 
-/*
-Wersja dla pojedynczego trojkata
-*/
-/*
-    for(int i=0; i<m_triangleCount; i++)
-    {
+    /*
+    Wersja dla pojedynczego trojkata
+    */
+    /*
+        for(int i=0; i<m_triangleCount; i++)
+        {
 
-        rt.triangle(
-            vp.tr(m_vertices[m_indices[i].x]),
-            vp.tr(m_vertices[m_indices[i].y]),
-            vp.tr(m_vertices[m_indices[i].z])
-        );
-    }
+            rt.triangle(
+                vp.tr(m_vertices[m_indices[i].x]),
+                vp.tr(m_vertices[m_indices[i].y]),
+                vp.tr(m_vertices[m_indices[i].z])
+            );
+        }
+    */
 
-*/
 }
 
 void render::TriangleMesh::calcNormals()

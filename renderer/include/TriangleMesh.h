@@ -16,14 +16,15 @@ class TriangleMesh
 public:
     TriangleMesh() {}
     virtual ~TriangleMesh() {}
-    void draw(const VertexProcessor &vp,const RenderTarget &rt) ;
+    void draw(const VertexProcessor &vp,const RenderTarget &rt) const;
     void calcNormals();
- void loadOBJ(std::string filename);
+    void loadOBJ(std::string filename);
 
 
     int m_vertSize,m_triangleCount;
-    std::vector<Vertex3Bf> m_vertices;
-    std::vector<Vector3Bi> m_indices;
+    Vertex3BfVector  m_vertices;
+
+    Vector3BiVector m_indices;
 //     Colour m_colour;
 };
 }

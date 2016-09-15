@@ -26,4 +26,6 @@ public:
 };
 typedef Vertex3<d_type::Bfloat>Vertex3Bf;
 typedef Vector3<Vertex3Bf> Vector3Vertex3Bf;
+typedef std::vector<Vertex3Bf,malloc_allocator<Vertex3Bf> > Vertex3BfVector;
+
 #endif // VERTEX3_H

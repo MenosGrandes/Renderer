@@ -912,3 +912,190 @@
 1473922940 source:/home/fr/Desktop/PoliMagisterskie/Renderer/renderer/src/VertexProcessor.cpp
 	"VertexProcessor.h"
 
+1473921196 source:/home/fr/Desktop/Renderer/renderer/src/CheckCPU.cpp
+	"CheckCPU.h"
+
+1473921193 /home/fr/Desktop/Renderer/renderer/include/CheckCPU.h
+	<windows.h>
+	<sys/param.h>
+	<sys/sysctl.h>
+	<unistd.h>
+
+1473935523 source:/home/fr/Desktop/Renderer/renderer/src/Colour.cpp
+	"Colour.h"
+
+1473935525 /home/fr/Desktop/Renderer/renderer/include/Colour.h
+	"structs.hpp"
+	"Vector2.h"
+	"Vector3.h"
+	<random>
+	<iostream>
+	<ctime>
+	<SFML/Graphics/Color.hpp>
+	"../src/algorithms.hpp"
+
+1473935525 /home/fr/Desktop/Renderer/renderer/include/structs.hpp
+	<limits>
+	<algorithm>
+	<cmath>
+	<iostream>
+	<stdint.h>
+	"alloc.h"
+
+1473921193 /home/fr/Desktop/Renderer/renderer/include/Vector2.h
+	"structs.hpp"
+
+1473936171 /home/fr/Desktop/Renderer/renderer/include/Vector3.h
+	"structs.hpp"
+	"../src/algorithms.hpp"
+
+1473932738 /home/fr/Desktop/Renderer/renderer/src/algorithms.hpp
+	<vector>
+	<limits>
+	<algorithm>
+	<random>
+
+1473935524 source:/home/fr/Desktop/Renderer/renderer/src/DirectionalLight.cpp
+	"DirectionalLight.h"
+
+1473935525 /home/fr/Desktop/Renderer/renderer/include/DirectionalLight.h
+	"ILight.h"
+
+1473921193 /home/fr/Desktop/Renderer/renderer/include/ILight.h
+	"Fragment.h"
+
+1473935523 /home/fr/Desktop/Renderer/renderer/include/Fragment.h
+	"Vertex3.h"
+
+1473935946 /home/fr/Desktop/Renderer/renderer/include/Vertex3.h
+	"Vector3.h"
+	"Colour.h"
+
+1473921196 source:/home/fr/Desktop/Renderer/renderer/src/Fragment.cpp
+	"Fragment.h"
+
+1473935524 source:/home/fr/Desktop/Renderer/renderer/src/ILight.cpp
+	"ILight.h"
+
+1473921196 source:/home/fr/Desktop/Renderer/renderer/src/Matrix4.cpp
+	"Matrix4.h"
+
+1473921193 /home/fr/Desktop/Renderer/renderer/include/Matrix4.h
+	"Vector4.h"
+	<ostream>
+	<iostream>
+
+1473921193 /home/fr/Desktop/Renderer/renderer/include/Vector4.h
+	"structs.hpp"
+
+1473935525 source:/home/fr/Desktop/Renderer/renderer/src/PointLight.cpp
+	"PointLight.h"
+
+1473935524 /home/fr/Desktop/Renderer/renderer/include/PointLight.h
+	"ILight.h"
+
+1473936155 source:/home/fr/Desktop/Renderer/renderer/src/RenderTarget.cpp
+	"RenderTarget.h"
+
+1473936155 /home/fr/Desktop/Renderer/renderer/include/RenderTarget.h
+	<iostream>
+	<fstream>
+	<SFML/Graphics.hpp>
+	"Vector2.h"
+	"Vertex3.h"
+	"../src/algorithms.hpp"
+	<stdio.h>
+	<string.h>
+	"VertexProcessor.h"
+
+1473935524 source:/home/fr/Desktop/Renderer/renderer/src/SpotLight.cpp
+	"SpotLight.h"
+
+1473935525 /home/fr/Desktop/Renderer/renderer/include/SpotLight.h
+	"ILight.h"
+	"../src/algorithms.hpp"
+
+1473935524 source:/home/fr/Desktop/Renderer/renderer/src/TriangleMesh.cpp
+	"TriangleMesh.h"
+
+1473936155 /home/fr/Desktop/Renderer/renderer/include/TriangleMesh.h
+	<vector>
+	<string>
+	<stdio.h>
+	<string.h>
+	<algorithm>
+	"Vertex3.h"
+	"VertexProcessor.h"
+	"RenderTarget.h"
+
+1473935946 /home/fr/Desktop/Renderer/renderer/include/VertexProcessor.h
+	"Vertex3.h"
+	"Vector2.h"
+	"Matrix4.h"
+	"Fragment.h"
+	"DirectionalLight.h"
+	"PointLight.h"
+	"SpotLight.h"
+	<vector>
+
+1473935946 source:/home/fr/Desktop/Renderer/renderer/src/VertexProcessor.cpp
+	"VertexProcessor.h"
+
+1473935867 source:/home/fr/Desktop/Renderer/renderer/main.cpp
+	"RenderTarget.h"
+	"VertexProcessor.h"
+	"TriangleMesh.h"
+	<sstream>
+	"FPS.hpp"
+
+1473921193 /home/fr/Desktop/Renderer/renderer/FPS.hpp
+	<SFML/System.hpp>
+
+1393946771 source:/home/fr/Desktop/Renderer/renderer/Allocators/FreeListAllocator.cpp
+	"FreeListAllocator.h"
+
+1393947207 /home/fr/Desktop/Renderer/renderer/Allocators/FreeListAllocator.h
+	"Allocator.h"
+
+1393947457 /home/fr/Desktop/Renderer/renderer/Allocators/Allocator.h
+	"Debug.h"
+	"Types.h"
+	<new>
+
+1393947187 /home/fr/Desktop/Renderer/renderer/Allocators/Debug.h
+	<assert.h>
+
+1473933812 /home/fr/Desktop/Renderer/renderer/Allocators/Types.h
+	<cstdint>
+	<stdlib.h>
+
+1393946798 source:/home/fr/Desktop/Renderer/renderer/Allocators/LinearAllocator.cpp
+	"LinearAllocator.h"
+
+1393946792 /home/fr/Desktop/Renderer/renderer/Allocators/LinearAllocator.h
+	"Allocator.h"
+
+1393946827 source:/home/fr/Desktop/Renderer/renderer/Allocators/PoolAllocator.cpp
+	"PoolAllocator.h"
+
+1393946819 /home/fr/Desktop/Renderer/renderer/Allocators/PoolAllocator.h
+	"Allocator.h"
+
+1393948000 source:/home/fr/Desktop/Renderer/renderer/Allocators/ProxyAllocator.cpp
+	"ProxyAllocator.h"
+
+1393947907 /home/fr/Desktop/Renderer/renderer/Allocators/ProxyAllocator.h
+	"Allocator.h"
+
+1393946847 source:/home/fr/Desktop/Renderer/renderer/Allocators/StackAllocator.cpp
+	"StackAllocator.h"
+
+1393946839 /home/fr/Desktop/Renderer/renderer/Allocators/StackAllocator.h
+	"Allocator.h"
+
+1473935097 source:/home/fr/Desktop/Renderer/renderer/allocator.cpp
+
+1473935324 /home/fr/Desktop/Renderer/renderer/include/alloc.h
+	<cstdlib>
+	<new>
+

@@ -286,28 +286,29 @@ void RenderTarget::triangle(Vertex3Bf a, Vertex3Bf b, Vertex3Bf c) const
     }
 }
 
-void RenderTarget::triangle(const std::vector<Vertex3Bf> vertex,const std::vector<Vector3Bi> indices,const int triangleCount) const//, Vertex3Bf b, Vertex3Bf c) const
+void RenderTarget::triangle(const     Vertex3BfVector  &vertex,const Vector3BiVector &indices,const int triangleCount,const VertexProcessor& vp) const//, Vertex3Bf b, Vertex3Bf c) const
 {
 
 //m_vertices[m_indices[i].x
 
-    Vertex3Bf a,b,c;
     for(int kk=0; kk<triangleCount; kk++)
     {
-    a=vertex[indices[kk].x];
-    b=vertex[indices[kk].y];
-    c=vertex[indices[kk].z];
 
 
-        const d_type::Bfloat minX = Min(Min(a.m_position.x, b.m_position.x), c.m_position.x);
-        const d_type::Bfloat maxX = Max(Max(a.m_position.x, b.m_position.x), c.m_position.x);
-        const d_type::Bfloat minY = Min(Min(a.m_position.y, b.m_position.y), c.m_position.y);
-        const d_type::Bfloat maxY = Max(Max(a.m_position.y, b.m_position.y), c.m_position.y);
+        a=vp.tr(vertex[indices[kk].x]);
+        b=vp.tr(vertex[indices[kk].y]);
+        c=vp.tr(vertex[indices[kk].z]);
 
-        const d_type::Bint minXPrim = (d_type::Bint)Max((d_type::Bint)((minX + 1) * m_size.x * 0.5f),0);
-        const d_type::Bint maxXPrim = (d_type::Bint)Min((d_type::Bint) ((maxX + 1) * m_size.x * 0.5f),m_size.x-1);
-        const d_type::Bint minYPrim = (d_type::Bint)Max((d_type::Bint) ((minY + 1) * m_size.y * 0.5f),0);
-        const d_type::Bint maxYPrim = (d_type::Bint)Min((d_type::Bint)((maxY + 1) * m_size.y * 0.5f),m_size.y-1);
+
+        minX = Min(Min(a.m_position.x, b.m_position.x), c.m_position.x);
+        maxX = Max(Max(a.m_position.x, b.m_position.x), c.m_position.x);
+        minY = Min(Min(a.m_position.y, b.m_position.y), c.m_position.y);
+        maxY = Max(Max(a.m_position.y, b.m_position.y), c.m_position.y);
+
+        minXPrim = (d_type::Bint)Max((d_type::Bint)((minX + 1) * m_size.x * 0.5f),0);
+        maxXPrim = (d_type::Bint)Min((d_type::Bint) ((maxX + 1) * m_size.x * 0.5f),m_size.x-1);
+        minYPrim = (d_type::Bint)Max((d_type::Bint) ((minY + 1) * m_size.y * 0.5f),0);
+        maxYPrim = (d_type::Bint)Min((d_type::Bint)((maxY + 1) * m_size.y * 0.5f),m_size.y-1);
 
 
 //    minXPrim = Max(minXPrim, 0);
@@ -316,15 +317,15 @@ void RenderTarget::triangle(const std::vector<Vertex3Bf> vertex,const std::vecto
 //    maxYPrim = Min(maxYPrim, m_size.y-1);
 
 
-        const d_type::Bfloat dx12 = a.m_position.x - b.m_position.x;
-        const d_type::Bfloat dx23 = b.m_position.x - c.m_position.x;
-        const d_type::Bfloat dx31 = c.m_position.x - a.m_position.x;
-        const d_type::Bfloat dx13 = a.m_position.x - c.m_position.x;
-        const d_type::Bfloat dx32 = c.m_position.x - b.m_position.x;
-        const d_type::Bfloat dy12 = a.m_position.y - b.m_position.y;
-        const d_type::Bfloat dy23 = b.m_position.y - c.m_position.y;
-        const d_type::Bfloat dy31 = c.m_position.y - a.m_position.y;
-        const d_type::Bfloat dy13 = a.m_position.y - c.m_position.y;
+        dx12 = a.m_position.x - b.m_position.x;
+        dx23 = b.m_position.x - c.m_position.x;
+        dx31 = c.m_position.x - a.m_position.x;
+        dx13 = a.m_position.x - c.m_position.x;
+        dx32 = c.m_position.x - b.m_position.x;
+        dy12 = a.m_position.y - b.m_position.y;
+        dy23 = b.m_position.y - c.m_position.y;
+        dy31 = c.m_position.y - a.m_position.y;
+        dy13 = a.m_position.y - c.m_position.y;
 
         // Top - left
         d_type::BBool tl1 = false, tl2 = false, tl3 = false;
@@ -357,7 +358,7 @@ void RenderTarget::triangle(const std::vector<Vertex3Bf> vertex,const std::vecto
                     ((tl3 && (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) > 0.0f)) || (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) >= 0.0f))
                 )
                 {
-                    d_type::Bfloat depth = lambda1 * a.m_position.z + lambda2 * b.m_position.z + lambda3 * c.m_position.z;
+                    depth = lambda1 * a.m_position.z + lambda2 * b.m_position.z + lambda3 * c.m_position.z;
 
 /////////////////////////////////////////
 
@@ -380,14 +381,20 @@ void RenderTarget::triangle(const std::vector<Vertex3Bf> vertex,const std::vecto
 }
 void RenderTarget::swapBuffers()
 {
+
+
+
+
+
+    Colour c;
     for(int i=getSizePixels(); i>0; --i)
     {
-        const Colour c= m_pixels[i];
-
+        c= m_pixels[i];
         m_pixelsU8[i*4]=c.r*255;
         m_pixelsU8[i*4+1]=c.g*255;
         m_pixelsU8[i*4+2]=c.b*255;
         m_pixelsU8[i*4+3]=255;
+
 
 
     }

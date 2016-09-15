@@ -41,5 +41,5 @@ Colour Colour::maxToOne(Colour c)
 //    }
 
 
-return Colour(Min(Max(c.r,0.0f),1.0f),Min(Max(c.g,0.0f),1.0f),Min(Max(c.b,0.0f),1.0f));
+    return Colour(Min(Max(c.r,0.0f),1.0f),Min(Max(c.g,0.0f),1.0f),Min(Max(c.b,0.0f),1.0f));
 }

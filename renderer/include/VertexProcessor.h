@@ -22,14 +22,16 @@ public:
     void setIdentity();
     void transform();
     Vertex3Bf tr(const Vertex3Bf &v) const;
-void tr(const std::vector<Vertex3Bf> v2,const int triangleCount) const;
+    void tr(const     Vertex3BfVector  v2,const int triangleCount) const;
 
     void addLight(ILight * light);
 
     Matrix4Bfloat view2proj,world2view,obj2world,obj2proj,obj2view;
     std::vector<ILight*> m_lights;
 
-    mutable std::vector<Vertex3Bf> tmp_vertices;
+    mutable     Vertex3BfVector  tmp_vertices;
+private :
+
 };
 
 #endif // VERTEXPROCESSOR_H

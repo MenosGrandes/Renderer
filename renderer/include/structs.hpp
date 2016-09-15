@@ -14,8 +14,7 @@
 #define INV_TWO_PI 1/TWO_PI
 
 #define F_EPSILON 0.000001
-
-
+#include "alloc.h"
 /**
  *  Namespace to group wrapped standard types
  *
@@ -48,7 +47,6 @@ typedef char          Bchar;
 typedef uint8_t Buint8;
 
 }
-
 
 
 

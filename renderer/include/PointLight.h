@@ -4,12 +4,12 @@
 
 class PointLight:public ILight
 {
-    public:
-        PointLight();
-        virtual ~PointLight();
-                PointLight(Vector3Bf pos);
+public:
+    PointLight();
+    virtual ~PointLight();
+    PointLight(Vector3Bf pos);
 
-virtual Colour calculate( const Fragment &f) const ;
+    virtual Colour calculate( const Fragment &f) const ;
 
 };
 

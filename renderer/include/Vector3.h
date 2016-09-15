@@ -3,7 +3,6 @@
 
 
 
-
 #ifndef VECTOR3_H
 #define VECTOR3_H
 #include "structs.hpp"
@@ -59,14 +58,14 @@ Vector3<T> Vector3<T>::clamp(const Vector3<T>& v,T min, T max)
 template <typename T>
 T Vector3<T>::distance(const Vector3<T> &p,const Vector3<T> &p2)
 {
-     return (sqrt(		(p.x- p2.x) * (p.x - p2.x)
-                   + 	(p.y -p2.y) * (p.y - p2.y)
-                   +	(p.z - p2.z) * (p.z - p2.z) ));
+    return (sqrt(		(p.x- p2.x) * (p.x - p2.x)
+                        + 	(p.y -p2.y) * (p.y - p2.y)
+                        +	(p.z - p2.z) * (p.z - p2.z) ));
 }
 template <typename T>
 inline T Vector3<T>::dotProduct(const Vector3<T>& p2) const
 {
-         return (x*p2.x + y*p2.y + z*p2.z);
+    return (x*p2.x + y*p2.y + z*p2.z);
 
 }
 
@@ -345,6 +344,7 @@ typedef Vector3<BBool> Vector3Bb;
 typedef Vector3<Bdouble> Vector3Bd;
 typedef Vector3<Bubyte> Vector3Bub;
 typedef std::vector<Vector3Bf> Vector3BfVector;
+typedef std::vector<Vector3Bi,malloc_allocator<Vector3Bi> > Vector3BiVector;
 typedef Vector3Bf Point3Bf;
 template<typename T>
 const Vector3<T> Vector3<T>::Up=Vector3<T>(0,1,0);

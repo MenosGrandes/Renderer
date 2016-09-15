@@ -14,7 +14,6 @@ int main(int argc, char **argv)
     RenderTarget rt(size);
     rt.setCleanColour(Colour::White);
 
-
 //
 
 
@@ -43,7 +42,7 @@ int main(int argc, char **argv)
     render::TriangleMesh *sm1 =new render::TriangleMesh();
     sm1->loadOBJ("models/cos1.obj");
 
-        render::TriangleMesh *donut =new render::TriangleMesh();
+    render::TriangleMesh *donut =new render::TriangleMesh();
     donut->loadOBJ("models/donut.obj");
 // FPS
     sf::Font font;
@@ -81,22 +80,21 @@ int main(int argc, char **argv)
     const Vector3Bf scale02(0.2f,0.2f,0.2f);
 
 
-d_type::BBool dragonOn=false;
+    d_type::BBool dragonOn=false;
 
-d_type::Bfloat cosAngle = 0.1f;
+    d_type::Bfloat cosAngle = 0.1f;
 
 
 //
-SpotLight * sl = new SpotLight(cosAngle,d_type::Bfloat(cos(cosAngle*M_PI/180.0f)),0.0f,Vector3Bf(0,0,-1),Vector3Bf(0,6.0f,10),Colour::Green);
-vp.addLight(sl);
+    SpotLight * sl = new SpotLight(cosAngle,d_type::Bfloat(cos(cosAngle*M_PI/180.0f)),0.0f,Vector3Bf(0,0,-1),Vector3Bf(0,6.0f,10),Colour::Green);
+    vp.addLight(sl);
 
 
     PointLight * light4= new PointLight(Vector3Bf(10.0f, 0, 0));
     vp.addLight(light4);
 
-        DirectionalLight * light3= new DirectionalLight(Vector3Bf(0.0f, 0.0f, -1.0f));
+    DirectionalLight * light3= new DirectionalLight(Vector3Bf(0.0f, 0.0f, -1.0f));
     vp.addLight(light3);
-
 
 
 
@@ -120,6 +118,7 @@ vp.addLight(sl);
                 if (event.key.code == sf::Keyboard::Escape)
                 {
                     window.close();
+                    std::cout<<"koniec"<<std::endl;
                 }
                 else if(event.key.code == sf::Keyboard::A)
                 {
@@ -162,19 +161,20 @@ vp.addLight(sl);
                 else if(event.key.code == sf::Keyboard::F2)
                 {
 
-                  light4->m_on = light4->m_on ? false :true;
+                    light4->m_on = light4->m_on ? false :true;
 
                 }
                 else if(event.key.code == sf::Keyboard::F3)
                 {
 
-                 light3->m_on = light3->m_on ? false :true;
+                    light3->m_on = light3->m_on ? false :true;
 
                 }
                 else if(event.key.code == sf::Keyboard::F5)
                 {
                     dragonOn= dragonOn ? false : true;
                 }
+
             }
         }
 
@@ -184,99 +184,100 @@ vp.addLight(sl);
         vp.setIdentity();
 //
 
-if(dragonOn)
-{
+        if(dragonOn)
+        {
 
 
-        vp.setIdentity();
-        vp.multByScale(Vector3Bf(0.3f,0.3f,0.3f));
+            vp.setIdentity();
+            vp.multByScale(Vector3Bf(0.3f,0.3f,0.3f));
 
-        vp.multByTranslation(Vector3Bf(0.0,5.f,0.0f));
-        vp.multByRotation(-angleRotation,Vector3Bf(0.0f,1.0f,0.0f));
-
-
-        vp.transform();
-
-        teapod->draw(vp, rt);
+            vp.multByTranslation(Vector3Bf(0.0,5.f,0.0f));
+            vp.multByRotation(-angleRotation,Vector3Bf(0.0f,1.0f,0.0f));
 
 
+            vp.transform();
 
-        vp.setIdentity();
-        vp.multByRotation(angle,Vector3Bf(0,1,0));
+            teapod->draw(vp, rt);
 
-        vp.multByTranslation(Vector3Bf(10.-5,5.f,1.0f));
 
-        vp.multByScale(Vector3Bf(0.8f,0.8f,0.8f));
-        vp.transform();
-        sphere->draw(vp, rt);
+
+            vp.setIdentity();
+            vp.multByRotation(angle,Vector3Bf(0,1,0));
+
+            vp.multByTranslation(Vector3Bf(10.-5,5.f,1.0f));
+
+            vp.multByScale(Vector3Bf(0.8f,0.8f,0.8f));
+            vp.transform();
+            sphere->draw(vp, rt);
 ////////////////////////
-        vp.setIdentity();
-        vp.multByTranslation(Vector3Bf(10.-5,5.f,1.0f));
+            vp.setIdentity();
+            vp.multByTranslation(Vector3Bf(10.-5,5.f,1.0f));
 
-        vp.multByRotation(76,Vector3Bf(0,1,0));
-        vp.multByRotation(10,Vector3Bf(0,0,1));
-        vp.multByRotation(angleRotation,Vector3Bf(0,1,0));
+            vp.multByRotation(76,Vector3Bf(0,1,0));
+            vp.multByRotation(10,Vector3Bf(0,0,1));
+            vp.multByRotation(angleRotation,Vector3Bf(0,1,0));
 
 
-        vp.multByScale(Vector3Bf(0.3f,0.3f,0.3f));
-        vp.transform();
-        ex1->draw(vp, rt);
+            vp.multByScale(Vector3Bf(0.3f,0.3f,0.3f));
+            vp.transform();
+            ex1->draw(vp, rt);
 /////////////////////////////
-        vp.setIdentity();
-                vp.multByTranslation(Vector3Bf(-5.5,5.f,1.0f));
+            vp.setIdentity();
+            vp.multByTranslation(Vector3Bf(-5.5,5.f,1.0f));
 
-    //        vp.multByRotation(180,Vector3Bf(1,0,0));
+            //        vp.multByRotation(180,Vector3Bf(1,0,0));
 //        vp.multByRotation(10,Vector3Bf(0,0,1));
 
-        vp.multByScale(Vector3Bf(5.3f,5.3f,5.3f));
-        vp.transform();
-        skull->draw(vp, rt);
+            vp.multByScale(Vector3Bf(5.3f,5.3f,5.3f));
+            vp.transform();
+            skull->draw(vp, rt);
 ////////////////////
 
 ///////////////////////////
-        vp.setIdentity();
+            vp.setIdentity();
 
-        vp.multByRotation(180,Vector3Bf(1,0,0));
-        vp.multByRotation(angleRotation,Vector3Bf(0,0,1));
-        vp.multByTranslation(Vector3Bf(0,15.f,3.0f));
+            vp.multByRotation(180,Vector3Bf(1,0,0));
+            vp.multByRotation(angleRotation,Vector3Bf(0,0,1));
+            vp.multByTranslation(Vector3Bf(0,15.f,3.0f));
 //        vp.multByRotation(angleRotation,Vector3Bf(1,0,1));
 
-        vp.multByScale(Vector3Bf(0.03f,0.03f,0.03f));
-        vp.transform();
-        sm1->draw(vp, rt);
+            vp.multByScale(Vector3Bf(0.03f,0.03f,0.03f));
+            vp.transform();
+            sm1->draw(vp, rt);
 ////////////////////
 
 ///////////////////////////
-        vp.setIdentity();
+            vp.setIdentity();
 
 //        vp.multByRotation(180,Vector3Bf(1,0,0));
 //        vp.multByRotation(angleRotation,Vector3Bf(0,0,1));
-        vp.multByTranslation(Vector3Bf(6,0,13.0f));
-        vp.multByRotation(angleRotation,Vector3Bf(1,0,1));
+            vp.multByTranslation(Vector3Bf(6,0,13.0f));
+            vp.multByRotation(angleRotation,Vector3Bf(1,0,1));
 
-        vp.multByScale(Vector3Bf(0.03f,0.03f,0.03f));
-        vp.transform();
-        donut->draw(vp, rt);
-}
-else {
+            vp.multByScale(Vector3Bf(0.03f,0.03f,0.03f));
+            vp.transform();
+            donut->draw(vp, rt);
+        }
+        else
+        {
 //////////////////
 
 ////////// DRAGON///////////////
 /////////////
-        vp.setIdentity();
+            vp.setIdentity();
 //    vp.multByScale(Vector3Bf(0.2f,0.2f,0.2f));
-        vp.multByTranslation(Vector3Bf(0.0,5.f,-2.0f));
-        vp.multByRotation(180,Vector3Bf(1.0f,0.0f,0.0f));
+            vp.multByTranslation(Vector3Bf(0.0,5.f,-2.0f));
+            vp.multByRotation(180,Vector3Bf(1.0f,0.0f,0.0f));
 
-        vp.multByRotation(angleRotation,Vector3Bf(0.0f,-1.0f,0.0f));
+            vp.multByRotation(angleRotation,Vector3Bf(0.0f,-1.0f,0.0f));
 
-        vp.transform();
+            vp.transform();
 
-       // dragon->draw(vp, rt);
-       ex1->draw(vp,rt);
+            // dragon->draw(vp, rt);
+            dragon->draw(vp,rt);
 /////////////////
 
-}
+        }
 //
         rt.swapBuffers();
         window.clear(sf::Color::Black);
@@ -295,11 +296,11 @@ else {
         fps.update();
 
 
-        ss.str(std::string());
-        ss<<fps.getFPS();
-        text.setString(ss.str()) ;
 
 
+                    ss.str(std::string());
+                    ss<<fps.getFPS();
+                    text.setString(ss.str()) ;
 
     }
 

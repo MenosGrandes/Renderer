@@ -119,7 +119,7 @@ void VertexProcessor::transform()
 
 
 }
-void VertexProcessor::tr(const std::vector<Vertex3Bf> v2,const int triangleCount) const
+void VertexProcessor::tr(const     Vertex3BfVector  v2,const int triangleCount) const
 {
 
     tmp_vertices.clear();
@@ -155,8 +155,8 @@ void VertexProcessor::tr(const std::vector<Vertex3Bf> v2,const int triangleCount
         }
 
         tmp_vertices.push_back( Vertex3Bf(Vector3Bf(p.x / p.w, p.y / p.w, p.z / p.w),
-                                v.m_normal,
-                                Colour::maxToOne(lightColour*v.m_color)));
+                                          v.m_normal,
+                                          Colour::maxToOne(lightColour*v.m_color)));
 
     }
 
@@ -164,17 +164,18 @@ void VertexProcessor::tr(const std::vector<Vertex3Bf> v2,const int triangleCount
 
 Vertex3Bf VertexProcessor::tr(const Vertex3Bf &v) const
 {
+
     Fragment frag;
     //PointLight * light= new PointLight(Vector3Bf(0.0f, 0.0f, .0f));
 
-    Vector4Bf p = obj2proj*Vector4Bf(v.m_position.x,v.m_position.y,v.m_position.z,1);
+    const Vector4Bf p = obj2proj*Vector4Bf(v.m_position.x,v.m_position.y,v.m_position.z,1);
 //UJEMNA POZYCJA
-    Vector4Bf lp = obj2view * Vector4Bf(-v.m_position.x,-v.m_position.y,-v.m_position.z,1);
+    const Vector4Bf lp = obj2view * Vector4Bf(-v.m_position.x,-v.m_position.y,-v.m_position.z,1);
     frag.m_negativePosToView = Vector3Bf(lp.x / lp.w, lp.y / lp.w, lp.z / lp.w);
 
 
 //NORMALNA
-    Vector4Bf normal = obj2view * Vector4Bf(v.m_normal.x,v.m_normal.y,v.m_normal.z,1);
+    const Vector4Bf normal= obj2view * Vector4Bf(v.m_normal.x,v.m_normal.y,v.m_normal.z,1);
     frag.m_normal = Vector3Bf(normal.x / normal.w, normal.y / normal.w, normal.z / normal.w);
     Vector3Bf::normalize(frag.m_normal);
 
