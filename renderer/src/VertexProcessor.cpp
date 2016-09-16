@@ -122,41 +122,48 @@ void VertexProcessor::transform()
 void VertexProcessor::tr(const     Vertex3BfVector  v2,const int triangleCount) const
 {
 
-    tmp_vertices.clear();
-    Vertex3Bf v;
+    // tmp_vertices.clear();
+    // Vertex3Bf v;
+    Vector4Bf _p,_lp,_norm;
+    Vector3Bf _3norm,_3norm2;
     for(int j=0; j<triangleCount; j++)
     {
-        v=v2[j];
-        Fragment frag;
-        //PointLight * light= new PointLight(Vector3Bf(0.0f, 0.0f, .0f));
+        const Vertex3Bf v=v2[j];
 
-        Vector4Bf p = obj2proj*Vector4Bf(v.m_position.x,v.m_position.y,v.m_position.z,1);
+        //PointLight * light= new PointLight(Vector3Bf(0.0f, 0.0f, .0f));
+        _p.emplace(v.m_position.x,v.m_position.y,v.m_position.z,1);
+        const Vector4Bf p = obj2proj*_p;
 //UJEMNA POZYCJA
-        Vector4Bf lp = obj2view * Vector4Bf(-v.m_position.x,-v.m_position.y,-v.m_position.z,1);
-        frag.m_negativePosToView = Vector3Bf(lp.x / lp.w, lp.y / lp.w, lp.z / lp.w);
+        _lp.emplace(-v.m_position.x,-v.m_position.y,-v.m_position.z,1);
+        const Vector4Bf lp = obj2view * _lp;
+        _3norm.emplace(lp.x / lp.w, lp.y / lp.w, lp.z / lp.w);
+        tmp_frag.m_negativePosToView = _3norm;
 
 
 //NORMALNA
-        Vector4Bf normal = obj2view * Vector4Bf(v.m_normal.x,v.m_normal.y,v.m_normal.z,1);
-        frag.m_normal = Vector3Bf(normal.x / normal.w, normal.y / normal.w, normal.z / normal.w);
-        Vector3Bf::normalize(frag.m_normal);
+        _norm.emplace(v.m_normal.x,v.m_normal.y,v.m_normal.z,1);
+        Vector4Bf normal = obj2view * _norm;
+        _3norm2.emplace(normal.x / normal.w, normal.y / normal.w, normal.z / normal.w);
+        tmp_frag.m_normal = _3norm2;
+        //Vector3Bf::normalize(frag.m_normal);
+        tmp_frag.m_normal.normalize();
 
-
-        frag.m_position = v.m_position;
+        tmp_frag.m_position = v.m_position;
 
         Colour lightColour = Colour::Black;
         for(int i=0; i<m_lights.size(); i++)
         {
             if(m_lights[i]->m_on)
             {
-                lightColour+=m_lights[i]->calculate(frag);//lightColour);
+                lightColour+=m_lights[i]->calculate(tmp_frag);//lightColour);
             }
 
         }
+        lightColour=v.m_color*lightColour;
 
-        tmp_vertices.push_back( Vertex3Bf(Vector3Bf(p.x / p.w, p.y / p.w, p.z / p.w),
-                                          v.m_normal,
-                                          Colour::maxToOne(lightColour*v.m_color)));
+        tmp_vertices[j]=( Vertex3Bf(Vector3Bf(p.x / p.w, p.y / p.w, p.z / p.w),
+                                    v.m_normal,
+                                    lightColour.maxToOneReturn()));
 
     }
 
@@ -165,37 +172,38 @@ void VertexProcessor::tr(const     Vertex3BfVector  v2,const int triangleCount) 
 Vertex3Bf VertexProcessor::tr(const Vertex3Bf &v) const
 {
 
-    Fragment frag;
+//    Fragment frag;
     //PointLight * light= new PointLight(Vector3Bf(0.0f, 0.0f, .0f));
 
     const Vector4Bf p = obj2proj*Vector4Bf(v.m_position.x,v.m_position.y,v.m_position.z,1);
 //UJEMNA POZYCJA
     const Vector4Bf lp = obj2view * Vector4Bf(-v.m_position.x,-v.m_position.y,-v.m_position.z,1);
-    frag.m_negativePosToView = Vector3Bf(lp.x / lp.w, lp.y / lp.w, lp.z / lp.w);
+    tmp_frag.m_negativePosToView = Vector3Bf(lp.x / lp.w, lp.y / lp.w, lp.z / lp.w);
 
 
 //NORMALNA
     const Vector4Bf normal= obj2view * Vector4Bf(v.m_normal.x,v.m_normal.y,v.m_normal.z,1);
-    frag.m_normal = Vector3Bf(normal.x / normal.w, normal.y / normal.w, normal.z / normal.w);
-    Vector3Bf::normalize(frag.m_normal);
+    tmp_frag.m_normal = Vector3Bf(normal.x / normal.w, normal.y / normal.w, normal.z / normal.w);
+    Vector3Bf::normalize(tmp_frag.m_normal);
 
 
-    frag.m_position = v.m_position;
+    tmp_frag.m_position = v.m_position;
 
     Colour lightColour = Colour::Black;
     for(int i=0; i<m_lights.size(); i++)
     {
         if(m_lights[i]->m_on)
         {
-            lightColour+=m_lights[i]->calculate(frag);//lightColour);
+            lightColour+=m_lights[i]->calculate(tmp_frag);//lightColour);
         }
 
     }
+    lightColour=v.m_color*lightColour;
 
 //       Colour::maxToOne(lightColour);
     return Vertex3Bf(Vector3Bf(p.x / p.w, p.y / p.w, p.z / p.w),
                      v.m_normal,
-                     Colour::maxToOne(lightColour*v.m_color));
+                     lightColour.maxToOneReturn());
 }
 void VertexProcessor::addLight(ILight* light)
 {

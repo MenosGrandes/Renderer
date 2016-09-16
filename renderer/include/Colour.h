@@ -27,7 +27,9 @@ public :
 
 
     static Colour clampColour(Colour r);
-    static Colour maxToOne(Colour r);
+//    static Colour maxToOne(const Colour &r);
+    Colour maxToOneReturn();
+    void maxToOne();
 
     static Colour randomColor();
     const static  Colour Green;

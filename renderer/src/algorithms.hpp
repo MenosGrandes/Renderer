@@ -10,13 +10,13 @@
 template<typename T>
 inline T Max(T left , T right)
 {
-return left > right ? left : right;
+    return left > right ? left : right;
 }
 
 template<typename T>
 inline T Min(T left, T right)
 {
-return left < right ? left : right;
+    return left < right ? left : right;
 }
 
 

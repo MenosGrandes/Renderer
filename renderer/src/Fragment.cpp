@@ -2,7 +2,8 @@
 
 Fragment::Fragment():Vertex3Bf()
 {
-    //ctor
+
+
 }
 
 Fragment::~Fragment()

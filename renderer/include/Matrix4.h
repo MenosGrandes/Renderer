@@ -10,9 +10,11 @@ public:
     Matrix4();
 
     Matrix4(T a,T a2,T a3,T a4,T a5,T a6,T a7,T a8,T a9,T a10,T a11,T a12,T a13,T a14,T a15,T a16);
-    Matrix4(Vector4<T> a1,Vector4<T> a2,Vector4<T> a3,Vector4<T> a4);
+    Matrix4(const Vector4<T> &a1,const Vector4<T> &a2, const Vector4<T> &a3,const Vector4<T> &a4);
     void transpose();
     const static Matrix4<T> Identity;//=Matrix4<T>(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+public:
     Vector4<Vector4<T> > data;
 
 
@@ -68,7 +70,7 @@ inline Matrix4<T>::Matrix4()
 }
 
 template <typename T>
-inline Matrix4<T>::Matrix4(Vector4<T> a1,Vector4<T> a2,Vector4<T> a3,Vector4<T> a4)
+inline Matrix4<T>::Matrix4(const Vector4<T> &a1,const Vector4<T> &a2,const Vector4<T> &a3,const Vector4<T> &a4)
 {
     data.x=a1;
     data.y=a2;
@@ -122,10 +124,14 @@ template <typename T>
 inline Vector4<T> operator *( const Matrix4<T> matrix, const Vector4<T>& vector)
 {
     return Vector4<T>(
-               Vector4<T>::dotProduct(matrix.data.x,vector),
-               Vector4<T>::dotProduct(matrix.data.y,vector),
-               Vector4<T>::dotProduct(matrix.data.z,vector),
-               Vector4<T>::dotProduct(matrix.data.w,vector)
+               matrix.data.x.dotProduct(vector),
+               matrix.data.y.dotProduct(vector),
+               matrix.data.z.dotProduct(vector),
+               matrix.data.w.dotProduct(vector)
+//               Vector4<T>::dotProduct(matrix.data.x,vector),
+//               Vector4<T>::dotProduct(matrix.data.y,vector),
+//               Vector4<T>::dotProduct(matrix.data.z,vector),
+//               Vector4<T>::dotProduct(matrix.data.w,vector)
 
 
            );
@@ -183,7 +189,7 @@ inline Matrix4<T> operator -(const Matrix4<T> &left)
 template <typename T>
 inline Matrix4<T> operator +(const Matrix4<T> &left,const Matrix4<T> &right)
 {
-    Matrix4<T> tmp=Matrix4<T>();
+    /*Matrix4<T> tmp=Matrix4<T>();
 
 
     tmp.data.x.x=left.data.x.x + right.data.x.x;
@@ -202,8 +208,26 @@ inline Matrix4<T> operator +(const Matrix4<T> &left,const Matrix4<T> &right)
     tmp.data.w.y=left.data.w.y + right.data.w.y;
     tmp.data.w.z=left.data.w.z + right.data.w.z;
     tmp.data.w.w=left.data.w.w + right.data.w.w;
+    */
+    return Matrix4<T>(
 
-    return tmp;
+               left.data.x.x + right.data.x.x,
+               left.data.x.y + right.data.x.y,
+               left.data.x.z + right.data.x.z,
+               left.data.x.w + right.data.x.w,
+               left.data.y.x + right.data.y.x,
+               left.data.y.y + right.data.y.y,
+               left.data.y.z + right.data.y.z,
+               left.data.y.w + right.data.y.w,
+               left.data.z.x + right.data.z.x,
+               left.data.z.y + right.data.z.y,
+               left.data.z.z + right.data.z.z,
+               left.data.z.w + right.data.z.w,
+               left.data.w.x + right.data.w.x,
+               left.data.w.y + right.data.w.y,
+               left.data.w.z + right.data.w.z,
+               left.data.w.w + right.data.w.w
+           );
 }
 template <typename T>
 inline Matrix4<T>& operator +=(Matrix4<T>& left, const Matrix4<T>& right)
@@ -233,10 +257,10 @@ inline Matrix4<T>& operator +=(Matrix4<T>& left, const Matrix4<T>& right)
 template <typename T>
 inline Matrix4<T> operator -(const Matrix4<T> &left,const Matrix4<T> &  right)
 {
-    Matrix4<T> tmp=Matrix4<T>();
 
 
-    tmp.data.x.x=left.data.x.x - right.data.x.x;
+
+    /*tmp.data.x.x=left.data.x.x - right.data.x.x;
     tmp.data.x.y=left.data.x.y - right.data.x.y;
     tmp.data.x.z=left.data.x.z - right.data.x.z;
     tmp.data.x.w=left.data.x.w - right.data.x.w;
@@ -252,8 +276,27 @@ inline Matrix4<T> operator -(const Matrix4<T> &left,const Matrix4<T> &  right)
     tmp.data.w.y=left.data.w.y - right.data.w.y;
     tmp.data.w.z=left.data.w.z - right.data.w.z;
     tmp.data.w.w=left.data.w.w - right.data.w.w;
+    */
+    return Matrix4<T>(
+               left.data.x.x - right.data.x.x,
+               left.data.x.y - right.data.x.y,
+               left.data.x.z - right.data.x.z,
+               left.data.x.w - right.data.x.w,
+               left.data.y.x - right.data.y.x,
+               left.data.y.y - right.data.y.y,
+               left.data.y.z - right.data.y.z,
+               left.data.y.w - right.data.y.w,
+               left.data.z.x - right.data.z.x,
+               left.data.z.y - right.data.z.y,
+               left.data.z.z - right.data.z.z,
+               left.data.z.w - right.data.z.w,
+               left.data.w.x - right.data.w.x,
+               left.data.w.y - right.data.w.y,
+               left.data.w.z - right.data.w.z,
+               left.data.w.w - right.data.w.w
 
-    return tmp;
+
+           );
 }
 template <typename T>
 inline Matrix4<T>& operator -=(Matrix4<T>& left, const Matrix4<T>& right)
@@ -282,51 +325,89 @@ inline Matrix4<T>& operator -=(Matrix4<T>& left, const Matrix4<T>& right)
 template <typename T>
 inline Matrix4<T> operator *(const Matrix4<T> &left,const T &right)
 {
-    Matrix4<T> tmp=Matrix4<T>();
-    tmp.data.x.x=left.data.x.x *right;
-    tmp.data.x.y=left.data.x.y *right;
-    tmp.data.x.z=left.data.x.z *right;
-    tmp.data.x.w=left.data.x.w *right;
-    tmp.data.y.x=left.data.y.x *right;
-    tmp.data.y.y=left.data.y.y *right;
-    tmp.data.y.z=left.data.y.z *right;
-    tmp.data.y.w=left.data.y.w *right;
-    tmp.data.z.x=left.data.z.x *right;
-    tmp.data.z.y=left.data.z.y *right;
-    tmp.data.z.z=left.data.z.z *right;
-    tmp.data.z.w=left.data.z.w *right;
-    tmp.data.w.x=left.data.w.x *right;
-    tmp.data.w.y=left.data.w.y *right;
-    tmp.data.w.z=left.data.w.z *right;
-    tmp.data.w.w=left.data.w.w *right;
-
-    return tmp;
+    /*    Matrix4<T> tmp=Matrix4<T>();
+        tmp.data.x.x=left.data.x.x *right;
+        tmp.data.x.y=left.data.x.y *right;
+        tmp.data.x.z=left.data.x.z *right;
+        tmp.data.x.w=left.data.x.w *right;
+        tmp.data.y.x=left.data.y.x *right;
+        tmp.data.y.y=left.data.y.y *right;
+        tmp.data.y.z=left.data.y.z *right;
+        tmp.data.y.w=left.data.y.w *right;
+        tmp.data.z.x=left.data.z.x *right;
+        tmp.data.z.y=left.data.z.y *right;
+        tmp.data.z.z=left.data.z.z *right;
+        tmp.data.z.w=left.data.z.w *right;
+        tmp.data.w.x=left.data.w.x *right;
+        tmp.data.w.y=left.data.w.y *right;
+        tmp.data.w.z=left.data.w.z *right;
+        tmp.data.w.w=left.data.w.w *right;
+    */
+    return Matrix4<T>(
+               left.data.x.x *right,
+               left.data.x.y *right,
+               left.data.x.z *right,
+               left.data.x.w *right,
+               left.data.y.x *right,
+               left.data.y.y *right,
+               left.data.y.z *right,
+               left.data.y.w *right,
+               left.data.z.x *right,
+               left.data.z.y *right,
+               left.data.z.z *right,
+               left.data.z.w *right,
+               left.data.w.x *right,
+               left.data.w.y *right,
+               left.data.w.z *right,
+               left.data.w.w *right
+           );
 }
 
 template <typename T>
 inline Matrix4<T> operator *(const Matrix4<T> &left,const Matrix4<T> &right)
 {
     return Matrix4<T>(
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.x),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.x),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.x),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.x),
-
+               Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.x),
+               Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.x),
+               Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.x),
+               Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.x),
                //////////////////////////////////////////////////////////////////////////////////
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.y),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.y),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.y),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.y),
+               Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.y),
+               Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.y),
+               Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.y),
+               Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.y),
 ////////////////////////////////////////////////////////////////////////////////
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.z),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.z),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.z),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.z),
+               Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.z),
+               Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.z),
+               Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.z),
+               Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.z),
 ////////////////////////////////////////////////////////////////////////////////////////////////
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.w),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.w),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.w),
-               Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.w)
+               Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.w),
+               Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.w),
+               Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.w),
+               Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.w)
+               /*
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.x),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.x),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.x),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.x),
+
+                          //////////////////////////////////////////////////////////////////////////////////
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.y),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.y),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.y),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.y),
+               ////////////////////////////////////////////////////////////////////////////////
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.z),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.z),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.z),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.z),
+               ////////////////////////////////////////////////////////////////////////////////////////////////
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.w),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.w),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.w),
+                          Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.w)
+                          */
            );
 
 }
@@ -334,26 +415,50 @@ template <typename T>
 inline Matrix4<T> &operator *=( Matrix4<T> &left,const Matrix4<T> &right)
 {
     left= Matrix4<T>(
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.x),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.x),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.x),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.x),
+
+              Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.x),
+              Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.x),
+              Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.x),
+              Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.x),
 
               //////////////////////////////////////////////////////////////////////////////////
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.y),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.y),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.y),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.y),
+              Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.y),
+              Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.y),
+              Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.y),
+              Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.y),
 ////////////////////////////////////////////////////////////////////////////////
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.z),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.z),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.z),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.z),
+              Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.z),
+              Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.z),
+              Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.z),
+              Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.z),
 ////////////////////////////////////////////////////////////////////////////////////////////////
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.w),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.w),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.w),
-              Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.w)
+              Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ).dotProduct(left.data.w),
+              Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ).dotProduct(left.data.w),
+              Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ).dotProduct(left.data.w),
+              Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ).dotProduct(left.data.w)
+
+              /*
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.x),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.x),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.x),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.x),
+
+                        //////////////////////////////////////////////////////////////////////////////////
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.y),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.y),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.y),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.y),
+              ////////////////////////////////////////////////////////////////////////////////
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.z),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.z),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.z),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.z),
+              ////////////////////////////////////////////////////////////////////////////////////////////////
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.x,right.data.y.x ,right.data.z.x ,right.data.w.x ),left.data.w),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.y,right.data.y.y ,right.data.z.y ,right.data.w.y ),left.data.w),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.z,right.data.y.z ,right.data.z.z ,right.data.w.z ),left.data.w),
+                        Vector4<T>::dotProduct(Vector4<T>(right.data.x.w,right.data.y.w ,right.data.z.w ,right.data.w.w ),left.data.w)
+                        */
           );
     return left;
 

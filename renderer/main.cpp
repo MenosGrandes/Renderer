@@ -298,9 +298,9 @@ int main(int argc, char **argv)
 
 
 
-                    ss.str(std::string());
-                    ss<<fps.getFPS();
-                    text.setString(ss.str()) ;
+        ss.str(std::string());
+        ss<<fps.getFPS();
+        text.setString(ss.str()) ;
 
     }
 

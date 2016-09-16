@@ -28,18 +28,21 @@ Colour Colour::clampColour(Colour c)
     }
     return c;
 }
-Colour Colour::maxToOne(Colour c)
+//Colour Colour::maxToOne(const Colour &c)
+//{
+//    return Colour(Min(Max(c.r,0.0f),1.0f),Min(Max(c.g,0.0f),1.0f),Min(Max(c.b,0.0f),1.0f));
+//}
+void Colour::maxToOne()
 {
-//    d_type::Bfloat maxC=std::min(c.r,std::max(c.g,c.b));
-//    if(maxC>= 1)
-//    {
-//        return c/maxC;
-//    }
-//    else
-//    {
-//        return c;
-//    }
-
-
-    return Colour(Min(Max(c.r,0.0f),1.0f),Min(Max(c.g,0.0f),1.0f),Min(Max(c.b,0.0f),1.0f));
+    Colour c= Colour(Min(Max(this->r,0.0f),1.0f),Min(Max(this->g,0.0f),1.0f),Min(Max(this->b,0.0f),1.0f));
+    this->a=c.a;
+    this->r=c.r;
+    this->g=c.g;
+    this->b=c.b;
 }
+Colour Colour::maxToOneReturn()
+{
+    return Colour(Min(Max(this->r,0.0f),1.0f),Min(Max(this->g,0.0f),1.0f),Min(Max(this->b,0.0f),1.0f));
+}
+
+

@@ -385,18 +385,18 @@ void RenderTarget::swapBuffers()
 
 
 
+    //std::for_each(m_vertices.begin(), m_vertices.end(), [](Vertex3Bf x){ x.m_normal.zero(); });
 
-    Colour c;
-    for(int i=getSizePixels(); i>0; --i)
+
+    for(int i=0; i<getSizePixels(); ++i)
     {
-        c= m_pixels[i];
-        m_pixelsU8[i*4]=c.r*255;
-        m_pixelsU8[i*4+1]=c.g*255;
-        m_pixelsU8[i*4+2]=c.b*255;
-        m_pixelsU8[i*4+3]=255;
 
-
-
+        const Colour c= m_pixels[i];
+        const int g=i*4;
+        m_pixelsU8[g]  = c.r*255;
+        m_pixelsU8[g+1]= c.g*255;
+        m_pixelsU8[g+2]= c.b*255;
+        m_pixelsU8[g+3]= 255;
     }
 
     m_texture.update(m_pixelsU8);

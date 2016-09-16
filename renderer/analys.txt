@@ -3,33 +3,34 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 35.11      6.78     6.78      395    17.16    36.41  RenderTarget::triangle(std::vector<Vertex3<float>, std::allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, std::allocator<Vector3<int> > > const&, int, VertexProcessor const&) const
- 32.11     12.98     6.20 91618275     0.00     0.00  VertexProcessor::tr(Vertex3<float> const&) const
- 17.56     16.37     3.39                             RenderTarget::swapBuffers()
-  6.73     17.67     1.30                             RenderTarget::clear()
-  3.83     18.41     0.74 91618275     0.00     0.00  Colour::maxToOne(Colour)
-  3.06     19.00     0.59 91618275     0.00     0.00  Fragment::Fragment()
-  0.52     19.10     0.10                             RenderTarget::RenderTarget(Vector2<int>)
-  0.36     19.17     0.07 91618275     0.00     0.00  Fragment::~Fragment()
-  0.36     19.24     0.07                             render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
-  0.16     19.27     0.03      352     0.09     0.09  void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
-  0.16     19.30     0.03       81     0.37     0.37  void std::vector<Vertex3<float>, std::allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&)
-  0.05     19.31     0.01       81     0.12     0.12  void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&)
-  0.00     19.31     0.00      160     0.00     0.00  void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&)
-  0.00     19.31     0.00        8     0.00     0.00  render::TriangleMesh::calcNormals()
-  0.00     19.31     0.00        3     0.00     0.00  ILight::ILight(Vector3<float>)
-  0.00     19.31     0.00        3     0.00     0.00  void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&)
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10PointLightC2Ev
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN12RenderTargetC2Ev
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN15VertexProcessorC2Ev
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN3FPS6updateEv
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6Colour5GreenE
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6ILightC2Ev
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8FragmentC2Ev
-  0.00     19.31     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9SpotLightC2Ev
+ 37.72      8.03     8.03 113653050     0.00     0.00  VertexProcessor::tr(Vertex3<float> const&) const
+ 34.66     15.41     7.38      490    15.06    32.63  RenderTarget::triangle(std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, malloc_allocator<Vector3<int> > > const&, int, VertexProcessor const&) const
+ 17.71     19.18     3.77                             RenderTarget::swapBuffers()
+  5.92     20.44     1.26                             RenderTarget::clear()
+  2.72     21.02     0.58 113653050     0.00     0.00  Colour::maxToOneReturn()
+  0.56     21.14     0.12                             render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.38     21.22     0.08                             RenderTarget::RenderTarget(Vector2<int>)
+  0.09     21.24     0.02      160     0.12     0.12  void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&)
+  0.09     21.26     0.02       81     0.25     0.25  void std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&)
+  0.05     21.27     0.01      264     0.04     0.04  void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
+  0.05     21.28     0.01       88     0.11     0.11  void std::vector<Vector3<int>, malloc_allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
+  0.05     21.29     0.01       81     0.12     0.12  void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&)
+  0.00     21.29     0.00        8     0.00     0.00  render::TriangleMesh::calcNormals()
+  0.00     21.29     0.00        3     0.00     0.00  ILight::ILight(Vector3<float>)
+  0.00     21.29     0.00        3     0.00     0.00  void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&)
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10PointLightC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN12RenderTargetC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN15VertexProcessorC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN3FPS6updateEv
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6Colour5GreenE
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6ILightC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8FragmentC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9SpotLightC2Ev
+  0.00     21.29     0.00        1     0.00     0.00  Fragment::Fragment()
+  0.00     21.29     0.00        1     0.00     0.00  Fragment::~Fragment()
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -67,104 +68,106 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) for 0.05% of 19.31 seconds
+granularity: each sample hit covers 4 byte(s) for 0.05% of 21.29 seconds
 
 index % time    self  children    called     name
-                6.78    7.60     395/395         render::TriangleMesh::draw(VertexProcessor const&, RenderTarget const&) [2]
-[1]     74.5    6.78    7.60     395         RenderTarget::triangle(std::vector<Vertex3<float>, std::allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, std::allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
-                6.20    1.40 91618275/91618275     VertexProcessor::tr(Vertex3<float> const&) const [3]
+                7.38    8.61     490/490         render::TriangleMesh::draw(VertexProcessor const&, RenderTarget const&) const [2]
+[1]     75.1    7.38    8.61     490         RenderTarget::triangle(std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, malloc_allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
+                8.03    0.58 113653050/113653050     VertexProcessor::tr(Vertex3<float> const&) const [3]
 -----------------------------------------------
                                                  <spontaneous>
-[2]     74.5    0.00   14.38                 render::TriangleMesh::draw(VertexProcessor const&, RenderTarget const&) [2]
-                6.78    7.60     395/395         RenderTarget::triangle(std::vector<Vertex3<float>, std::allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, std::allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
+[2]     75.1    0.00   15.99                 render::TriangleMesh::draw(VertexProcessor const&, RenderTarget const&) const [2]
+                7.38    8.61     490/490         RenderTarget::triangle(std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, malloc_allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
 -----------------------------------------------
-                6.20    1.40 91618275/91618275     RenderTarget::triangle(std::vector<Vertex3<float>, std::allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, std::allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
-[3]     39.4    6.20    1.40 91618275         VertexProcessor::tr(Vertex3<float> const&) const [3]
-                0.74    0.00 91618275/91618275     Colour::maxToOne(Colour) [6]
-                0.59    0.00 91618275/91618275     Fragment::Fragment() [7]
-                0.07    0.00 91618275/91618275     Fragment::~Fragment() [10]
+                8.03    0.58 113653050/113653050     RenderTarget::triangle(std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, malloc_allocator<Vector3<int> > > const&, int, VertexProcessor const&) const [1]
+[3]     40.4    8.03    0.58 113653050         VertexProcessor::tr(Vertex3<float> const&) const [3]
+                0.58    0.00 113653050/113653050     Colour::maxToOneReturn() [6]
 -----------------------------------------------
                                                  <spontaneous>
-[4]     17.6    3.39    0.00                 RenderTarget::swapBuffers() [4]
+[4]     17.7    3.77    0.00                 RenderTarget::swapBuffers() [4]
 -----------------------------------------------
                                                  <spontaneous>
-[5]      6.7    1.30    0.00                 RenderTarget::clear() [5]
+[5]      5.9    1.26    0.00                 RenderTarget::clear() [5]
 -----------------------------------------------
-                0.74    0.00 91618275/91618275     VertexProcessor::tr(Vertex3<float> const&) const [3]
-[6]      3.8    0.74    0.00 91618275         Colour::maxToOne(Colour) [6]
------------------------------------------------
-                0.59    0.00 91618275/91618275     VertexProcessor::tr(Vertex3<float> const&) const [3]
-[7]      3.1    0.59    0.00 91618275         Fragment::Fragment() [7]
+                0.58    0.00 113653050/113653050     VertexProcessor::tr(Vertex3<float> const&) const [3]
+[6]      2.7    0.58    0.00 113653050         Colour::maxToOneReturn() [6]
 -----------------------------------------------
                                                  <spontaneous>
-[8]      0.7    0.07    0.07                 render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-                0.03    0.00     352/352         void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [11]
-                0.03    0.00      81/81          void std::vector<Vertex3<float>, std::allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&) [12]
+[7]      0.9    0.12    0.07                 render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+                0.02    0.00     160/160         void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&) [9]
+                0.02    0.00      81/81          void std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&) [10]
+                0.01    0.00     264/264         void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [11]
+                0.01    0.00      88/88          void std::vector<Vector3<int>, malloc_allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [12]
                 0.01    0.00      81/81          void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&) [13]
-                0.00    0.00     160/160         void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&) [21]
-                0.00    0.00       8/8           render::TriangleMesh::calcNormals() [22]
+                0.00    0.00       8/8           render::TriangleMesh::calcNormals() [21]
 -----------------------------------------------
                                                  <spontaneous>
-[9]      0.5    0.10    0.00                 RenderTarget::RenderTarget(Vector2<int>) [9]
+[8]      0.4    0.08    0.00                 RenderTarget::RenderTarget(Vector2<int>) [8]
 -----------------------------------------------
-                0.07    0.00 91618275/91618275     VertexProcessor::tr(Vertex3<float> const&) const [3]
-[10]     0.4    0.07    0.00 91618275         Fragment::~Fragment() [10]
+                0.02    0.00     160/160         render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[9]      0.1    0.02    0.00     160         void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&) [9]
 -----------------------------------------------
-                0.03    0.00     352/352         render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-[11]     0.2    0.03    0.00     352         void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [11]
+                0.02    0.00      81/81          render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[10]     0.1    0.02    0.00      81         void std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&) [10]
 -----------------------------------------------
-                0.03    0.00      81/81          render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-[12]     0.2    0.03    0.00      81         void std::vector<Vertex3<float>, std::allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&) [12]
+                0.01    0.00     264/264         render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[11]     0.0    0.01    0.00     264         void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [11]
 -----------------------------------------------
-                0.01    0.00      81/81          render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-[13]     0.1    0.01    0.00      81         void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&) [13]
+                0.01    0.00      88/88          render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[12]     0.0    0.01    0.00      88         void std::vector<Vector3<int>, malloc_allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&) [12]
 -----------------------------------------------
-                0.00    0.00     160/160         render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-[21]     0.0    0.00    0.00     160         void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&) [21]
+                0.01    0.00      81/81          render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[13]     0.0    0.01    0.00      81         void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&) [13]
 -----------------------------------------------
-                0.00    0.00       8/8           render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [8]
-[22]     0.0    0.00    0.00       8         render::TriangleMesh::calcNormals() [22]
+                0.00    0.00       8/8           render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [7]
+[21]     0.0    0.00    0.00       8         render::TriangleMesh::calcNormals() [21]
 -----------------------------------------------
-                0.00    0.00       1/3           DirectionalLight::DirectionalLight(Vector3<float>) [63]
-                0.00    0.00       1/3           PointLight::PointLight(Vector3<float>) [36]
-                0.00    0.00       1/3           SpotLight::SpotLight(float, float, float, Vector3<float>, Vector3<float>, Colour) [81]
-[23]     0.0    0.00    0.00       3         ILight::ILight(Vector3<float>) [23]
+                0.00    0.00       1/3           DirectionalLight::DirectionalLight(Vector3<float>) [64]
+                0.00    0.00       1/3           PointLight::PointLight(Vector3<float>) [37]
+                0.00    0.00       1/3           SpotLight::SpotLight(float, float, float, Vector3<float>, Vector3<float>, Colour) [83]
+[22]     0.0    0.00    0.00       3         ILight::ILight(Vector3<float>) [22]
 -----------------------------------------------
-                0.00    0.00       3/3           VertexProcessor::addLight(ILight*) [57]
-[24]     0.0    0.00    0.00       3         void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&) [24]
+                0.00    0.00       3/3           VertexProcessor::addLight(ILight*) [58]
+[23]     0.0    0.00    0.00       3         void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&) [23]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[25]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10PointLightC2Ev [25]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[24]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10PointLightC2Ev [24]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[26]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN12RenderTargetC2Ev [26]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[25]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN12RenderTargetC2Ev [25]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[27]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN15VertexProcessorC2Ev [27]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[26]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN15VertexProcessorC2Ev [26]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[28]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE [28]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[27]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE [27]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[29]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN3FPS6updateEv [29]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[28]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN3FPS6updateEv [28]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[30]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6Colour5GreenE [30]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[29]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6Colour5GreenE [29]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[31]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6ILightC2Ev [31]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[30]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6ILightC2Ev [30]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[32]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE [32]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[31]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE [31]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[33]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE [33]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[32]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE [32]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[34]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8FragmentC2Ev [34]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[33]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8FragmentC2Ev [33]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [105]
-[35]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9SpotLightC2Ev [35]
+                0.00    0.00       1/1           __libc_csu_init [107]
+[34]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9SpotLightC2Ev [34]
+-----------------------------------------------
+                0.00    0.00       1/1           VertexProcessor::VertexProcessor() [61]
+[35]     0.0    0.00    0.00       1         Fragment::Fragment() [35]
+-----------------------------------------------
+                0.00    0.00       1/1           VertexProcessor::~VertexProcessor() [63]
+[36]     0.0    0.00    0.00       1         Fragment::~Fragment() [36]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -257,12 +260,13 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [25] _GLOBAL__sub_I__ZN10PointLightC2Ev [34] _GLOBAL__sub_I__ZN8FragmentC2Ev [7] Fragment::Fragment()
-  [26] _GLOBAL__sub_I__ZN12RenderTargetC2Ev [35] _GLOBAL__sub_I__ZN9SpotLightC2Ev [10] Fragment::~Fragment()
-  [27] _GLOBAL__sub_I__ZN15VertexProcessorC2Ev [4] RenderTarget::swapBuffers() [1] RenderTarget::triangle(std::vector<Vertex3<float>, std::allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, std::allocator<Vector3<int> > > const&, int, VertexProcessor const&) const
-  [28] _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE [5] RenderTarget::clear() [3] VertexProcessor::tr(Vertex3<float> const&) const
-  [29] _GLOBAL__sub_I__ZN3FPS6updateEv [9] RenderTarget::RenderTarget(Vector2<int>) [13] void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&)
-  [30] _GLOBAL__sub_I__ZN6Colour5GreenE [6] Colour::maxToOne(Colour) [21] void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&)
-  [31] _GLOBAL__sub_I__ZN6ILightC2Ev [23] ILight::ILight(Vector3<float>) [11] void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
-  [32] _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE [22] render::TriangleMesh::calcNormals() [12] void std::vector<Vertex3<float>, std::allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&)
-  [33] _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE [8] render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [24] void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&)
+  [24] _GLOBAL__sub_I__ZN10PointLightC2Ev [34] _GLOBAL__sub_I__ZN9SpotLightC2Ev [1] RenderTarget::triangle(std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > > const&, std::vector<Vector3<int>, malloc_allocator<Vector3<int> > > const&, int, VertexProcessor const&) const
+  [25] _GLOBAL__sub_I__ZN12RenderTargetC2Ev [4] RenderTarget::swapBuffers() [3] VertexProcessor::tr(Vertex3<float> const&) const
+  [26] _GLOBAL__sub_I__ZN15VertexProcessorC2Ev [5] RenderTarget::clear() [13] void std::vector<Vector2<float>, std::allocator<Vector2<float> > >::_M_emplace_back_aux<Vector2<float> const&>(Vector2<float> const&)
+  [27] _GLOBAL__sub_I__ZN16DirectionalLightC2E7Vector3IfE [8] RenderTarget::RenderTarget(Vector2<int>) [9] void std::vector<Vector3<float>, std::allocator<Vector3<float> > >::_M_emplace_back_aux<Vector3<float> const&>(Vector3<float> const&)
+  [28] _GLOBAL__sub_I__ZN3FPS6updateEv [6] Colour::maxToOneReturn() [12] void std::vector<Vector3<int>, malloc_allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
+  [29] _GLOBAL__sub_I__ZN6Colour5GreenE [22] ILight::ILight(Vector3<float>) [11] void std::vector<Vector3<int>, std::allocator<Vector3<int> > >::_M_emplace_back_aux<Vector3<int> const&>(Vector3<int> const&)
+  [30] _GLOBAL__sub_I__ZN6ILightC2Ev [21] render::TriangleMesh::calcNormals() [10] void std::vector<Vertex3<float>, malloc_allocator<Vertex3<float> > >::_M_emplace_back_aux<Vertex3<float> >(Vertex3<float>&&)
+  [31] _GLOBAL__sub_I__ZN6render12TriangleMesh7loadOBJENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE [7] render::TriangleMesh::loadOBJ(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [23] void std::vector<ILight*, std::allocator<ILight*> >::_M_emplace_back_aux<ILight* const&>(ILight* const&)
+  [32] _GLOBAL__sub_I__ZN7Matrix4IfE8IdentityE [35] Fragment::Fragment()
+  [33] _GLOBAL__sub_I__ZN8FragmentC2Ev [36] Fragment::~Fragment()

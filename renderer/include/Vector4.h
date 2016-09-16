@@ -16,7 +16,9 @@ public:
     T min();
     T max();
     static T dotProduct(const Vector4<T>& p1, const Vector4<T>& p2);
-
+    T dotProduct(const Vector4<T>& p2) const;
+    void emplace(const Vector4<T> &p1);
+    void emplace(T a,T b,T c,T d);
 
 
     T x; ///< X coordinate of the vector
@@ -24,10 +26,36 @@ public:
     T z; ///< Z coordinate of the vector
     T w; ///< W coordinate of the vector / depth
 };
+///////////////////////////////////////
+template <typename T>
+void Vector4<T>::emplace(const Vector4<T>& p1)
+{
+this->x=p1.x;
+this->y=p1.y;
+this->z=p1.z;
+this->w=p1.w;
+
+}
+////////////////////////////////////////
+template <typename T>
+void Vector4<T>::emplace(T a,T b,T c,T d)
+{
+this->x=a;
+this->y=b;
+this->z=c;
+this->w=d;
+
+}
 template <typename T>
 T Vector4<T>::dotProduct(const Vector4<T>& p1, const Vector4<T>& p2)
 {
     return (p1.x*p2.x + p1.y*p2.y + p1.z*p2.z + p1.w*p2.w );
+}
+/////////////////////////////////////
+template <typename T>
+T Vector4<T>::dotProduct( const Vector4<T>& p2) const
+{
+    return (this->x*p2.x + this->y*p2.y + this->z*p2.z + this->w*p2.w );
 }
 
 template <typename T>

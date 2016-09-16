@@ -29,7 +29,9 @@ public:
     Matrix4Bfloat view2proj,world2view,obj2world,obj2proj,obj2view;
     std::vector<ILight*> m_lights;
 
-    mutable     Vertex3BfVector  tmp_vertices;
+    mutable Vertex3BfVector  tmp_vertices;
+    mutable Fragment tmp_frag;
+
 private :
 
 };

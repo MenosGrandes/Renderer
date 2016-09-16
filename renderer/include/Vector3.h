@@ -2,7 +2,6 @@
 
 
 
-
 #ifndef VECTOR3_H
 #define VECTOR3_H
 #include "structs.hpp"
@@ -26,13 +25,19 @@ public :
 
     static T  dotProduct(const Vector3<T>& p1, const Vector3<T>& p2);
     T dotProduct(const Vector3<T> &p1) const;
+
     Vector3<T> vecProduct(const Vector3<T>& p1, const Vector3<T>& p2);
     Vector3<T> computeNormal(const Vector3<T>& p1, const Vector3<T>& p2);
     T length();
     T lengthSquared();
+
     static Vector3<T> cross(const Vector3<T>& left,const Vector3<T>& right);
+    void cross(const Vector3<T>& right);
+    Vector3<T> cross(const Vector3<T>& right) const;
+
     Vector3<T> reflect(const Vector3<T>&v) const;
     static Vector3<T> reflect(const Vector3<T>&v,const Vector3<T>&v2) ;
+
     static T distance(const Vector3<T>&v,const Vector3<T>&v2) ;
 
     Vector3<T> lerp(const Vector3<T>&v, const T f);
@@ -41,9 +46,11 @@ public :
     T x, y, z;
 
     static const Vector3<T> Up;
+    void normalize();
+    void zero();
 
-
-
+    void emplace(const Vector3<T> &p1);
+    void emplace(T a,T b,T c);
 
 };
 
@@ -297,8 +304,24 @@ Vector3<T> Vector3<T>::cross(const Vector3<T>& left,const Vector3<T>& right)
     return  Vector3<T>(left.y * right.z - left.z * right.y, left.z * right.x - left.x * right.z, left.x * right.y - left.y * right.x);
 
 }
+///////////////////////////////////////////////////////////
 
+template <typename T>
+void Vector3<T>::cross(const Vector3<T>& right)
+{
 
+    this=  Vector3<T>(this.y * right.z - this->z * right.y, this->z * right.x - this->x * right.z, this->x * right.y - this->y * right.x);
+
+}
+///////////////////////////////////////////////////////////
+
+template <typename T>
+Vector3<T> Vector3<T>::cross(const Vector3<T>& right) const
+{
+
+    return Vector3<T>(this.y * right.z - this->z * right.y, this->z * right.x - this->x * right.z, this->x * right.y - this->y * right.x);
+
+}
 ///////////////////////////////////////////////////////////
 
 template <typename T>
@@ -334,8 +357,41 @@ void Vector3<T>::normalize(Vector3<T>&v)
         v/=n;
     }
 }
+///////////////////////////////////////////////////////////
+template <typename T>
+inline void Vector3<T>::normalize()
+{
+    d_type::Bfloat n = this->length();
+    if(n!=0)
+    {
+        this->x=this->x/n;
+    }
+}
+///////////////////////////////////////////////////////////
+template <typename T>
+inline void Vector3<T>::zero()
+{
+    this->x=0;
+    this->y=0;
+    this->z=0;
+}
+///////////////////////////////////////////////////////////
+template <typename T>
+inline void Vector3<T>::emplace(const Vector3<T> &p1)
+{
+    this->x=p1.x;
+    this->y=p1.y;
+    this->z=p1.z;
 
+}
+template <typename T>
+inline void Vector3<T>::emplace(T a,T b,T c)
+{
+    this->x=a;
+    this->x=b;
+    this->x=c;
 
+}
 
 // Define the most common types
 typedef Vector3<Bint>   Vector3Bi;

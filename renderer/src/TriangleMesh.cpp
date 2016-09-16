@@ -140,10 +140,13 @@ void render::TriangleMesh::draw(const VertexProcessor &vp,const RenderTarget &rt
 
 void render::TriangleMesh::calcNormals()
 {
-    for (int i = 0; i < m_vertSize; i++)
-    {
-        m_vertices[i].m_normal = Vector3Bf(0,0,0);
-    }
+
+    std::for_each(m_vertices.begin(), m_vertices.end(), [](Vertex3Bf x){ x.m_normal.zero(); });
+
+//    for (int i = 0; i < m_vertSize; i++)
+//    {
+//        m_vertices[i].m_normal.zero();
+//    }
     Vector3Bf n;
     for (int i = 0; i < m_triangleCount; i++)
     {
@@ -152,18 +155,19 @@ void render::TriangleMesh::calcNormals()
                m_vertices[m_indices[i].y].m_position - m_vertices[m_indices[i].x].m_position
            );
 
-        Vector3Bf::normalize(n);
-
+       // Vector3Bf::normalize(n);
+    n.normalize();
 
         m_vertices[m_indices[i].x].m_normal += n;
         m_vertices[m_indices[i].y].m_normal += n;
         m_vertices[m_indices[i].z].m_normal += n;
     }
 
-    for (int i = 0; i < m_vertSize; i++)
-    {
-        Vector3Bf::normalize(m_vertices[i].m_normal);
+    std::for_each(m_vertices.begin(), m_vertices.end(), [](Vertex3Bf x){ x.m_normal.normalize(); });
 
-    }
+//    for (int i = 0; i < m_vertSize; i++)
+//    {
+//        //Vector3Bf::normalize(m_vertices[i].m_normal);
+//        (m_vertices[i].m_normal).normalize();
+//    }
 }
-
