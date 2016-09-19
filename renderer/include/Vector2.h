@@ -1,6 +1,9 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 #include "structs.hpp"
+
+
+
 template <typename T>
 class Vector2
 {
@@ -271,4 +274,9 @@ typedef Vector2<d_type::Bint> Vector2Bi;
 typedef Vector2<d_type::Buint> Vector2Bui;
 typedef Vector2<d_type::Bshort> Vector2Bs;
 
+
+
+
 #endif // VECTOR2_H
+
+

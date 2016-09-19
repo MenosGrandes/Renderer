@@ -20,8 +20,10 @@ Colour PointLight::calculate(const Fragment& v) const
     N = v.m_normal;
     V = v.m_negativePosToView;
     L = V - m_position;
-    Vector3Bf::normalize(L);//L.Normalize();
-    Vector3Bf::normalize(V);//V.Normalize();
+    //Vector3Bf::normalize(L);//
+    L.normalize();
+    //Vector3Bf::normalize(V);//
+    V.normalize();
     R =Vector3Bf::reflect(L,N);
     // L.Reflect(N);
 

@@ -50,6 +50,7 @@
 			<Add directory="C:/Libs/SFML/SFML-2.1/include" />
 		</Compiler>
 		<Linker>
+			<Add option="-lgtest -lgtest_main -lpthread" />
 			<Add directory="C:/Libs/SFML/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="FPS.hpp" />
@@ -85,6 +86,7 @@
 		<Unit filename="src/TriangleMesh.cpp" />
 		<Unit filename="src/VertexProcessor.cpp" />
 		<Unit filename="src/algorithms.hpp" />
+		<Unit filename="tests.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

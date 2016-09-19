@@ -365,6 +365,8 @@ inline void Vector3<T>::normalize()
     if(n!=0)
     {
         this->x=this->x/n;
+         this->y=this->y/n;
+          this->z=this->z/n;
     }
 }
 ///////////////////////////////////////////////////////////

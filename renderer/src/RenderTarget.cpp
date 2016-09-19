@@ -286,7 +286,7 @@ void RenderTarget::triangle(Vertex3Bf a, Vertex3Bf b, Vertex3Bf c) const
     }
 }
 
-void RenderTarget::triangle(const     Vertex3BfVector  &vertex,const Vector3BiVector &indices,const int triangleCount,const VertexProcessor& vp) const//, Vertex3Bf b, Vertex3Bf c) const
+void RenderTarget::triangle(const  Vertex3BfVector  &vertex,const Vector3BiVector &indices,const int triangleCount,const VertexProcessor& vp) const//, Vertex3Bf b, Vertex3Bf c) const
 {
 
 //m_vertices[m_indices[i].x
@@ -353,9 +353,9 @@ void RenderTarget::triangle(const     Vertex3BfVector  &vertex,const Vector3BiVe
                 const d_type::Bfloat lambda3 = 1 - lambda1 - lambda2;
 
                 if (
-                    ((tl1 && (dx12 * (tmpY - a.m_position.y) - dy12 * (tmpX - a.m_position.x) > 0.0f)) || (dx12 * (tmpY - a.m_position.y) - dy12 * (tmpX - a.m_position.x) >= 0.0f)) &&
-                    ((tl2 && (dx23 * (tmpY - b.m_position.y) - dy23 * (tmpX - b.m_position.x) > 0.0f)) || (dx23 * (tmpY - b.m_position.y) - dy23 * (tmpX - b.m_position.x) >= 0.0f)) &&
-                    ((tl3 && (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) > 0.0f)) || (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) >= 0.0f))
+                    ((tl1 & (dx12 * (tmpY - a.m_position.y) - dy12 * (tmpX - a.m_position.x) > 0.0f)) | (dx12 * (tmpY - a.m_position.y) - dy12 * (tmpX - a.m_position.x) >= 0.0f)) &
+                    ((tl2 & (dx23 * (tmpY - b.m_position.y) - dy23 * (tmpX - b.m_position.x) > 0.0f)) | (dx23 * (tmpY - b.m_position.y) - dy23 * (tmpX - b.m_position.x) >= 0.0f)) &
+                    ((tl3 & (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) > 0.0f)) | (dx31 * (tmpY - c.m_position.y) - dy31 * (tmpX - c.m_position.x) >= 0.0f))
                 )
                 {
                     depth = lambda1 * a.m_position.z + lambda2 * b.m_position.z + lambda3 * c.m_position.z;
@@ -365,7 +365,7 @@ void RenderTarget::triangle(const     Vertex3BfVector  &vertex,const Vector3BiVe
 
 /////////////////////////////////////////
 
-                    if (depth >= -1.f && depth <= 1.f && depth < m_dBuffer[m_size.x * j + i])
+                    if (depth >= -1.f & depth <= 1.f & depth < m_dBuffer[m_size.x * j + i])
                     {
 
 
