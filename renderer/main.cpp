@@ -10,16 +10,10 @@
 int main(int argc, char **argv)
 {
 
-Vector2Bf v(1.02,1.03f);
-Vector2Bf v2(-1.02,-1.03f);
-
-Vector2Bf a11=v2*v;
-if(a11==(v2*v))
-{
-std::cout<<"Takie same";
-}
+#ifdef RUN_TEST
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
+#endif // RUN_TEST
 
 
 

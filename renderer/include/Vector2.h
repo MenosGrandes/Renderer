@@ -13,6 +13,7 @@ public:
     Vector2(T X, T Y);
     template <typename U>
     explicit Vector2(const Vector2<U>& vector);
+    //Vector2(Vector2<T> &&other);
     T min();
     T max();
 
@@ -21,6 +22,7 @@ public:
     Vector2<T> computeNormal(const Vector2<T>& p1, const Vector2<T>& p2);
 
 
+//Vector2<T>& operator=(Vector2<T>&& other);
 
     T x; ///< X coordinate of the vector
     T y; ///< Y coordinate of the vector
@@ -75,6 +77,7 @@ bool operator !=(const Vector2<T>& left, const Vector2<T>& right);
 
 
 
+
 template <typename T>
 inline std::ostream& operator<< (std::ostream& stream, const Vector2<T>& v)
 {
@@ -92,7 +95,6 @@ inline Vector2<T>::Vector2() :
 
 }
 
-
 ////////////////////////////////////////////////////////////
 template <typename T>
 inline Vector2<T>::Vector2(T X, T Y) :
@@ -101,7 +103,20 @@ inline Vector2<T>::Vector2(T X, T Y) :
 {
 
 }
-
+//////////////////////////////////////////////////
+//template <typename T>
+//inline Vector2<T>& operator=(Vector2<T>&& other)
+//{
+//    if(this!=&other)
+//    {
+//        x=other.x;
+//        y=other.y;
+//
+//        other.x=0;
+//        other.y=0;
+//    }
+//    return *this;
+//}
 
 ////////////////////////////////////////////////////////////
 template <typename T>
